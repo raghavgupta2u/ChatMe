@@ -24,7 +24,7 @@
         app:layout_constraintVertical_bias="0.265" />
 
     <EditText
-        android:id="@+id/editTextTextPassword"
+        android:id="@+id/editTexLoginPassword"
         android:layout_width="335dp"
         android:layout_height="@dimen/_52sdp"
         android:ems="10"
@@ -38,7 +38,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/Loginbutton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Login"
@@ -55,12 +55,12 @@
         android:layout_height="wrap_content"
         android:text="Not have a account !"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.462"
+        app:layout_constraintHorizontal_bias="0.419"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.96" />
+        app:layout_constraintVertical_bias="0.542" />
 
     <TextView
         android:id="@+id/textView6"
@@ -76,7 +76,7 @@
         app:layout_constraintVertical_bias="0.542" />
 
     <EditText
-        android:id="@+id/editTextTextEmailAddress"
+        android:id="@+id/editTextLoginEmailAddress"
         android:layout_width="334dp"
         android:layout_height="@dimen/_52sdp"
         android:ems="10"
