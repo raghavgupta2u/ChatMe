@@ -5,7 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/black"
-    tools:context=".SignUp">
+    tools:context=".SignUp"
+    tools:layout_editor_absoluteX="-1dp"
+    tools:layout_editor_absoluteY="122dp">
 
     <TextView
         android:id="@+id/textView3"
@@ -24,7 +26,7 @@
         app:layout_constraintVertical_bias="0.09" />
 
     <EditText
-        android:id="@+id/editTextTextPassword"
+        android:id="@+id/editPassword"
         android:layout_width="335dp"
         android:layout_height="@dimen/_52sdp"
         android:ems="10"
@@ -38,8 +40,24 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <EditText
+        android:id="@+id/editconfirmPassword"
+        android:layout_width="335dp"
+        android:layout_height="@dimen/_52sdp"
+        android:ems="10"
+        android:hint="Confirm Password"
+        android:inputType="textPassword"
+        android:textColorHint="@color/cardview_dark_background"
+        android:textSize="@dimen/_13sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.394"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.632" />
+
     <Button
-        android:id="@+id/button"
+        android:id="@+id/Singupbutton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Sing up"
@@ -49,7 +67,7 @@
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.701" />
+        app:layout_constraintVertical_bias="0.879" />
 
     <TextView
         android:id="@+id/textView5"
@@ -59,13 +77,13 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.387"
+        app:layout_constraintHorizontal_bias="0.383"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.603" />
+        app:layout_constraintVertical_bias="0.773" />
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/textloginButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="  Login"
@@ -75,10 +93,10 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/textView5"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.602" />
+        app:layout_constraintVertical_bias="0.773" />
 
     <EditText
-        android:id="@+id/editTextTextEmailAddress"
+        android:id="@+id/editEmailAddress"
         android:layout_width="334dp"
         android:layout_height="@dimen/_52sdp"
         android:ems="10"
@@ -91,20 +109,20 @@
         app:layout_constraintHorizontal_bias="0.402"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.343" />
+        app:layout_constraintVertical_bias="0.362" />
 
     <EditText
-        android:id="@+id/editTextText2"
+        android:id="@+id/editusername"
         android:layout_width="334dp"
         android:layout_height="@dimen/_52sdp"
         android:ems="10"
         android:inputType="text"
+        android:text="Username"
         android:textColorHint="@color/cardview_dark_background"
         android:textSize="@dimen/_13sdp"
-        android:text="Username"
-        tools:layout_editor_absoluteX="32dp"
-        tools:layout_editor_absoluteY="154dp"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="30dp"
+        tools:layout_editor_absoluteY="153dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
