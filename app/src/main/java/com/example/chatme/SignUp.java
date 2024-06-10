@@ -1,6 +1,9 @@
 package com.example.chatme;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.annotation.ColorInt;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
@@ -24,11 +27,12 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class SignUp extends AppCompatActivity {
     TextView SU_loginButton;
     EditText SU_emailaddress, SU_username, SU_confirmpassword, SU_password;
-    Button singupbutton1;
+    Button SU_singupbutton;
     String Emailpatten = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
     FirebaseAuth auth;
     FirebaseDatabase database;
@@ -36,23 +40,33 @@ public class SignUp extends AppCompatActivity {
     Uri imageURI;
     String imageuri;
     ProgressDialog progressDialog;
+    CircleImageView SU_profileimg;
+    ActivityResultLauncher<Intent> imagePickLanture;
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup_page);
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("Singup your account");
+        progressDialog.setCancelable(false);
         getSupportActionBar().hide();
+        getWindow().setStatusBarColor(getColor(R.color.black));
 
         database = FirebaseDatabase.getInstance();
         storage = FirebaseStorage.getInstance();
+        auth = FirebaseAuth.getInstance();
 
         SU_emailaddress = findViewById(R.id.editEmailAddress);
         SU_username = findViewById(R.id.editusername);
         SU_confirmpassword = findViewById(R.id.editconfirmPassword);
         SU_password = findViewById(R.id.editPassword);
         SU_loginButton = findViewById(R.id.textloginButton);
-        singupbutton1 = findViewById(R.id.Singupbutton);
+        SU_singupbutton = findViewById(R.id.Singupbutton);
+        SU_profileimg = findViewById(R.id.profilerg);
+
 
         SU_loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,8 +77,10 @@ public class SignUp extends AppCompatActivity {
             }
         });
 
+
+
         //Adding Profile Picture
-       /* username.setOnClickListener(new View.OnClickListener() {
+        SU_profileimg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent();
@@ -73,9 +89,12 @@ public class SignUp extends AppCompatActivity {
                 startActivityForResult(Intent.createChooser(intent,"Select Picture"),10);
 
             }
-        });*/
+        });
 
-        singupbutton1.setOnClickListener(new View.OnClickListener() {
+
+
+
+        SU_singupbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String namee = SU_username.getText().toString();
@@ -86,16 +105,16 @@ public class SignUp extends AppCompatActivity {
 
                 if (TextUtils.isEmpty(namee) || TextUtils.isEmpty(email) ||
                         TextUtils.isEmpty(password) || TextUtils.isEmpty(cpassword)) {
-                    //progressDialog.dismiss();
+                    progressDialog.dismiss();
                     Toast.makeText(SignUp.this, "Please Enter Valid Information", Toast.LENGTH_SHORT).show();
                 } else if (!email.matches(Emailpatten)) {
-                    // progressDialog.dismiss();
+                     progressDialog.dismiss();
                     SU_emailaddress.setError("Type A Valid Email Here");
                 } else if (password.length() < 6) {
-                    // progressDialog.dismiss();
+                     progressDialog.dismiss();
                     SU_password.setError("Password Must Be 6 Characters Or More");
                 } else if (!password.equals(cpassword)) {
-                    // progressDialog.dismiss();
+                     progressDialog.dismiss();
                     SU_password.setError("The Password Doesn't Match");
                 } else {
                     auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -135,7 +154,7 @@ public class SignUp extends AppCompatActivity {
                                         }
                                     });
                                 } else {
-                                    String status = "Hey I'm Using This Application";
+
                                     imageuri = "https://firebasestorage.googleapis.com/v0/b/chateapp-my.appspot.com/o/circle-user_48.png?alt=media&token=18e78bcc-0b77-45cd-abca-dfb2ec2b21da";
                                     Users users = new Users(id, namee, email, password, imageuri, status);
                                     reference.setValue(users).addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -162,4 +181,5 @@ public class SignUp extends AppCompatActivity {
             }
         });
     }
+
 }

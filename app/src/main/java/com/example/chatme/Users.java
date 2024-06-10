@@ -1,7 +1,15 @@
 package com.example.chatme;
 
 public class Users {
-    String profilepic,mail,password,userId,lastMessage,status;
+    String profilepic,mail,username,password,userId,lastMessage,status;
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
 
     public Users(String id, String namee, String email, String password, String imageuri, String status){
 
